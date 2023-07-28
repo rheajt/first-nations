@@ -7,5 +7,5 @@ export function onOpen() {
 
 export function openModal() {
     const html = HtmlService.createHtmlOutputFromFile("modal");
-    DocumentApp.getUi().showModalDialog(html, "First Nations");
+    DocumentApp.getUi().showModalDialog(html, "First Nations Keyboard");
 }

@@ -31,6 +31,11 @@ module.exports = {
         new GasPlugin({
             autoGlobalExportsFiles: ["**/*.ts"],
         }),
+        new webpack.BannerPlugin({
+            banner: "/* @OnlyCurrentDoc */",
+            raw: true,
+            entryOnly: true,
+        }),
         new FileManagerPlugin({
             events: {
                 onStart: {
