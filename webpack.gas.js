@@ -1,53 +1,53 @@
-const webpack = require('webpack');
-const path = require('path');
-const GasPlugin = require('gas-webpack-plugin');
-const FileManagerPlugin = require('filemanager-webpack-plugin');
+const webpack = require("webpack");
+const path = require("path");
+const GasPlugin = require("gas-webpack-plugin");
+const FileManagerPlugin = require("filemanager-webpack-plugin");
 
 module.exports = {
-    entry: './src/index.ts',
+    entry: "./src/index.ts",
     module: {
         rules: [
             {
                 test: /\.(ts)?$/,
-                use: 'ts-loader',
+                use: "ts-loader",
                 exclude: /node_modules/,
             },
             {
                 test: /\.(js)$/,
                 exclude: /node_modules/,
-                use: ['babel-loader'],
+                use: ["babel-loader"],
             },
         ],
     },
     resolve: {
-        extensions: ['*', '.js', '.jsx', '.ts', '.tsx', '.json'],
+        extensions: ["*", ".js", ".jsx", ".ts", ".tsx", ".json"],
     },
     output: {
-        path: path.resolve(__dirname, './build'),
-        filename: 'code.[contenthash].js',
+        path: path.resolve(__dirname, "./build"),
+        filename: "code.[contenthash].js",
         clean: true,
     },
     plugins: [
         new GasPlugin({
-            autoGlobalExportsFiles: ['**/*.ts']
+            autoGlobalExportsFiles: ["**/*.ts"],
         }),
         new FileManagerPlugin({
             events: {
                 onStart: {
-                    delete: ['./dist/*.js']
+                    delete: ["./dist/*.js"],
                 },
                 onEnd: {
                     copy: [
-                        { source: './build/*.js', destination: 'dist/' },
-                        { source: './appsscript.json', destination: 'dist/' },
+                        { source: "./build/*.js", destination: "dist/" },
+                        { source: "./appsscript.json", destination: "dist/" },
                     ],
-                    delete: ['./build/'],
+                    delete: ["./build/"],
                 },
             },
         }),
     ],
     devServer: {
         hot: true,
-        watchFiles: ['src/pages/**/*.hbs'],
+        watchFiles: ["src/pages/**/*.hbs"],
     },
 };
