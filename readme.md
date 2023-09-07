@@ -1,8 +1,6 @@
-# SMA Project Management Tool
+# First Nations
 
 [![clasp](https://img.shields.io/badge/built%20with-clasp-4285f4.svg)](https://github.com/google/clasp)
-
-This is the project management tool for the [Survey Monkey Apply](https://apply.surveymonkey.com/) review process used by CFC.
 
 `npm run dev`
 
